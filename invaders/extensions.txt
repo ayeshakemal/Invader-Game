@@ -1,0 +1,56 @@
+Extensions:
+#1 Sound Effects 
+  Description:
+   -Every time the ship shoots a player bolt, a pew sound is played.
+   -Every time an alien is destroyed, a blast sound is played (of two)
+   -By default, volume is on, but user may toggle it on and off by pressing "Y"
+  Implementation:
+   -Created sound attributes in Wave and play them whenever appropriate conditions are met.
+   -Created volume attribute in wave controlled in app by user input.
+
+#2 Lives, Wave, and Score Counter 
+  Description:
+   -On the top left of the screen there is a lives counter 
+   -In the middle, there is the current wave.
+   -On the right is the score. 
+   -The middle text changes to the boss' live number during a boss fight.
+  Implementation:
+   -Created lives, wave number, and score attributes in Wave 
+   -Change them accordingly as conditions are met (i.e. when an alien is destroyed, add to score depending on type     of alien)
+   -Have _text in app display these counters. 
+
+#3 Animating the Aliens 
+  Description:
+   -Aliens are animated and alternate between 2 different images per alien step.
+   -A blast animation is played when an alien is destroyed 
+  Implementation:
+   -Changed Alien to have the parent object GSprite 
+   -Used provided filmstrips instead of the static images 
+   -Changed code accordingly in wave to shift between frames as the aliens moved / are destroyed
+
+#4 Multiple Waves
+  Description:
+    -After a wave is cleared, the game displays "New Wave. Press S to begin new wave"
+    -When the user presses S, a new wave appears with Score, Lives, Wave number preserved. 
+    -Each subsequent wave is faster than the last. 
+  Implementation:
+    -Created a speed object in wave that is multiplied by a factor when a new wave is created. 
+
+#5 Dynamically Speeding up the Aliens 
+  Description:
+    -Each time an alien is killed, the aliens speed up 
+  Implementation:
+    -Change the attribute speed by a factor of *.99 when a player bolt collides with an alien. 
+
+#6 Boss Fight 
+  Description:
+    -Every other wave is a boss fight 
+    -The boss behaves differently than regular aliens. 
+    -Its movements are pseudo-random, moving in all four directions (doesn't move down as often)
+    -There's a rudimentary dodging mechanism: when the player fires a bolt, there's a chance the alien will move      left or right to dodge
+    -It takes 10 hits to kill a boss and each hit is worth 40 points 
+    -The boss is a recolored version of alien3
+  Implementation:
+    -Created boss_lives attribute in wave. Subtract 1 each time collision is detected until 0; then destroyed.
+    -Created move_boss function in wave to move the boss as described above
+    -Recolored alien-sprite3.png and referenced it when making the object.
